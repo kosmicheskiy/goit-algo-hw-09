@@ -1,3 +1,5 @@
+import timeit
+
 def find_min_coins(amount):
     denominations = [1, 2, 5, 10, 20, 50]  # доступні номінали монет
     coins_used = [float('inf')] * (amount + 1)
@@ -23,7 +25,23 @@ def find_min_coins(amount):
     return coins_count
 
 # Приклад використання
-amount = 113
-result = find_min_coins(amount)
+result = find_min_coins(113)
 print(result)
+result = find_min_coins(5003)
+print(result)
+result = find_min_coins(150958)
+print(result)
+
+print("Calculation of time used by find_coins_greedy")
+print(timeit.timeit(lambda: find_min_coins(113), number=10))
+print(timeit.timeit(lambda: find_min_coins(5003), number=10))
+print(timeit.timeit(lambda: find_min_coins(150958), number=10))
+
+
 #{1: 1, 2: 1, 10: 1, 50: 2}
+#{1: 1, 2: 1, 50: 100}
+#{1: 1, 2: 1, 5: 1, 50: 3019}
+#Calculation of time used by find_coins_greedy
+#0.0014816929997323314
+#0.06571091799924034
+#2.9394993980004074
